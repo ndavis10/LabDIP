@@ -20,11 +20,11 @@ import javax.swing.JOptionPane;
  */
 public class Startup {
     public static void main(String[] args) {
-//        TipCalculator calc = new BaggageServiceTipCalculator(ServiceQuality.FAIR, 3);
-
-        TipCalculator calc = new FoodServiceTipCalculator(ServiceQuality.GOOD, 10);
+        TipService service = new TipService(new BaggageServiceTipCalculator(ServiceQuality.FAIR, 3));
+        System.out.println(service.getTip());
+        service.setCalc(new FoodServiceTipCalculator(ServiceQuality.GOOD, 10));
         
-        System.out.println(calc.getTip());
+        System.out.println(service.getTip());
         
     }
 
