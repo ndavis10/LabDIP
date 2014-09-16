@@ -19,12 +19,11 @@ import javax.swing.JOptionPane;
  * @author your name goes here
  */
 public class Startup {
-    public static enum ServiceQuality {
-           GOOD, FAIR, POOR
-    };
- 
     public static void main(String[] args) {
+        TipCalculator calc = new BaggageServiceTipCalculator(ServiceQuality.FAIR, 3);
         
+        
+        System.out.println(calc.getTip());
         
     }
 
