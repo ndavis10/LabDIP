@@ -40,7 +40,7 @@ public class BaggageServiceTipCalculator implements TipCalculator {
     }
 
     @Override
-    public final void setServiceRating(ServiceQuality q) {
+    public void setServiceRating(ServiceQuality q) {
         // No need to validate because enums provide type safety!
         serviceQuality = q;
     }
@@ -54,7 +54,7 @@ public class BaggageServiceTipCalculator implements TipCalculator {
         return bagCount;
     }
 
-    public final void setBagCount(int bagCount) {
+    public void setBagCount(int bagCount) {
         if(bagCount < 0) {
             throw new IllegalArgumentException(
                     "bag count must be greater than or equal to zero");
