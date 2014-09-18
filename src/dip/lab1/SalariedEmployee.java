@@ -6,8 +6,10 @@ package dip.lab1;
  *
  * @author your name goes here
  */
-public class SalariedEmployee extends Employee {
+public class SalariedEmployee implements Employee {
 
+    private double annualSalary;
+    private double annualBonus;
     /** default constructor. Is this the best way to go? */
     public SalariedEmployee() {}
 
@@ -22,4 +24,39 @@ public class SalariedEmployee extends Employee {
     }
 
     
+    /**
+     * Is this polymorphic? Should it be? Does it belong here?
+     * @return
+     */
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+
+    /**
+     * Is this polymorphic? Should it be? Does it belong here?
+     * @param annualSalary - think carefully about this
+     */
+    public void setAnnualSalary(double annualSalary) {
+        this.annualSalary = annualSalary;
+    }
+    
+    public void setAnnualBonus(double annualBonus)
+    {
+        this.annualBonus = annualBonus;
+    }
+    
+    public double getAnnualBonus()
+    {
+        return annualBonus;
+    }
+
+    @Override
+    public double getWages(Period p) 
+    {
+        if(p == Period.YEARLY)
+        {
+            return (annualSalary * p.getYearFraction()) + getAnnualBonus();
+        }
+        return annualSalary * p.getYearFraction();
+    }
 }

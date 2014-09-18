@@ -36,6 +36,10 @@ public class FoodServiceTipCalculator extends VariableRateTipCalculator{
         return tip;
     }
 
+    public double getBill() {
+        return bill;
+    }
+
     public final void setBill(double billAmt) {
         if(billAmt < getMinBill()) {
             throw new IllegalArgumentException(getBillEntryError());
