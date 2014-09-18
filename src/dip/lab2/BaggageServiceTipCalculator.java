@@ -8,7 +8,7 @@ package dip.lab2;
  *
  * @author your name goes here
  */
-public class BaggageServiceTipCalculator implements TipCalculator {
+public class BaggageServiceTipCalculator extends VariableRateTipCalculator {
     private double baseTipPerBag;
     private int bagCount;
     private ServiceQuality serviceQuality;
@@ -26,13 +26,13 @@ public class BaggageServiceTipCalculator implements TipCalculator {
 
         switch(serviceQuality) {
             case GOOD:
-                tip = baseTipPerBag * bagCount * (1 + GOOD_RATE);
+                tip = baseTipPerBag * bagCount * (1 + getGoodRate());
                 break;
             case FAIR:
-                tip = baseTipPerBag * bagCount * (1 + FAIR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + getFairRate());
                 break;
             case POOR:
-                tip = baseTipPerBag * bagCount * (1 + POOR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + getPoorRate());
                 break;
         }
 

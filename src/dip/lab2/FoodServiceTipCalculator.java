@@ -8,7 +8,7 @@ package dip.lab2;
  *
  * @author your name goes here
  */
-public class FoodServiceTipCalculator implements TipCalculator{
+public class FoodServiceTipCalculator extends VariableRateTipCalculator{
     private double bill;
     private ServiceQuality serviceQuality;
 
@@ -23,13 +23,13 @@ public class FoodServiceTipCalculator implements TipCalculator{
 
         switch(serviceQuality) {
             case GOOD:
-                tip = bill * GOOD_RATE;
+                tip = bill * getGoodRate();
                 break;
             case FAIR:
-                tip = bill * FAIR_RATE;
+                tip = bill * getFairRate();
                 break;
             case POOR:
-                tip = bill * POOR_RATE;
+                tip = bill * getPoorRate();
                 break;
         }
 
@@ -37,8 +37,8 @@ public class FoodServiceTipCalculator implements TipCalculator{
     }
 
     public final void setBill(double billAmt) {
-        if(billAmt < MIN_BILL) {
-            throw new IllegalArgumentException(BILL_ENTRY_ERR);
+        if(billAmt < getMinBill()) {
+            throw new IllegalArgumentException(getBillEntryError());
         }
         bill = billAmt;
     }
